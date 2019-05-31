@@ -81,7 +81,7 @@
   \begin{tikzpicture}[remember picture, overlay]
     \useasboundingbox[help lines] (current page.north west) grid (current page.south east);
     \begin{scope}[every node/.style={anchor=west, text width=\textwidth, minimum height=1em}]
-      \node at (0,1) {\usebeamertemplate*{section title}};
+      \node at (0,-1) {\usebeamertemplate*{section title}};
     \end{scope}
     \begin{scope}[on background layer, remember picture, overlay]
       % Red banner
