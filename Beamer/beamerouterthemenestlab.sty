@@ -1,0 +1,26 @@
+\usepackage{tikz}
+
+%
+% Margins
+%
+\setbeamersize{text margin left=1cm}
+\setbeamersize{text margin right=1cm}
+\setbeamersize{sidebar width left=0cm}
+\setbeamersize{sidebar width right=0cm}
+\setbeamersize{mini frame size=0cm}
+\setbeamersize{mini frame offset=0cm}
+
+%
+% No navigation symbols
+%
+\setbeamertemplate{navigation symbols}{}
+
+%
+% Frame title
+%
+\setbeamertemplate{frametitle}{
+  \begin{tikzpicture}
+    \node(frametitle)[text width=\textwidth,minimum height=2em]{\insertframetitle};
+    \draw[line width=2pt,wpired] (frametitle.south west) -- (frametitle.south east);
+  \end{tikzpicture}
+}

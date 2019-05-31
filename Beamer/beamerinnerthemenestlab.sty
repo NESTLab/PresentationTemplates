@@ -1,0 +1,105 @@
+\usepackage{tikz}
+\usetikzlibrary{backgrounds,positioning}
+
+%
+% Title page
+%
+\setbeamertemplate{title page}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \useasboundingbox[help lines] (current page.north west) grid (current page.south east);
+    \begin{scope}[every node/.style={anchor=west, text width=\textwidth, minimum height=1em}]
+      \node(title) at (0,1)                   {\usebeamertemplate*{title}};
+      \node(subtitle) [below=5mm of title]    {\usebeamertemplate*{subtitle}};
+      \node(author)   [below=5mm of subtitle] {\usebeamertemplate*{author}};
+      \node(institute)[below=2mm of author]   {\usebeamertemplate*{institute}};
+      \node(date)     [below=2mm of institute]{\usebeamertemplate*{date}};
+    \end{scope}
+    \begin{scope}[on background layer, remember picture, overlay]
+      % Official WPI logo
+      \node[anchor=north west,xshift=1cm,yshift=-5mm] at (current page.north west) {\includegraphics[height=1.5cm]{wpi_logo}};
+      % NESTLab logo
+      \node[anchor=south west,xshift=8mm,yshift=2mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};
+      % Background WPI logo
+      \node[xshift=1.5mm,yshift=-1.5mm,anchor=south east] at (current page.south east) {\includegraphics[scale=2]{wpi_background}};
+    \end{scope}
+  \end{tikzpicture}
+}
+
+%
+% Title
+%
+\setbeamertemplate{title}{
+  \inserttitle
+}
+
+%
+% Subtitle
+%
+\setbeamertemplate{subtitle}{
+  \insertsubtitle
+}
+
+%
+% Author
+%
+\setbeamertemplate{author}{
+  \insertauthor
+}
+
+%
+% Institute
+%
+\setbeamertemplate{institute}{
+  \insertinstitute
+}
+
+%
+% Date
+%
+\setbeamertemplate{date}{
+  \insertdate
+}
+
+% Redefine \maketitle
+\def\maketitle{%
+  \ifbeamer@inframe
+  \titlepage
+  \else
+  \frame[plain,noframenumbering]{\titlepage}
+  \fi
+}
+
+% Redefine \titlepage
+\def\titlepage{%
+  \usebeamertemplate{title page}
+}
+
+%
+% Section page
+%
+\setbeamertemplate{section page}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \useasboundingbox[help lines] (current page.north west) grid (current page.south east);
+    \begin{scope}[every node/.style={anchor=west, text width=\textwidth, minimum height=1em}]
+      \node at (0,1) {\usebeamertemplate*{section title}};
+    \end{scope}
+    \begin{scope}[on background layer, remember picture, overlay]
+      % Red banner
+      \fill[wpired] (current page.north west) rectangle +(\pagewidth, -1.5cm);
+      % NESTLab logo
+      \node[anchor=south west,xshift=8mm,yshift=2mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};
+      % Background WPI logo
+      \node[xshift=1.5mm,yshift=-1.5mm,anchor=south east] at (current page.south east) {\includegraphics[scale=2]{wpi_background}};
+    \end{scope}
+  \end{tikzpicture}
+}
+
+% Section title
+\setbeamertemplate{section title}{
+  \insertsection
+}
+
+%
+% Itemize symbols
+%
+\setbeamertemplate{itemize items}[square]

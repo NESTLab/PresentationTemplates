@@ -1,0 +1,47 @@
+\usepackage{xcolor}
+
+%
+% WPI colors
+%
+\definecolor{wpired}{HTML}{AB192D}
+\definecolor{wpigray}{HTML}{6D6D6D}
+\definecolor{wpigrey}{HTML}{6D6D6D}
+
+%
+% Base colors
+%
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=wpired}
+\setbeamercolor{example text}{fg=wpigray}
+\setbeamercolor{structure}{use=alerted text, parent=alerted text}
+\setbeamercolor{local structure}{use=structure, parent=structure}
+
+%
+% Colors of various elements
+%
+\setbeamercolor{frametitle}{use=normal text, parent=normal text}
+\setbeamercolor{titlelike}{use=normal text, parent=normal text}
+\setbeamercolor{subtitle}{use=normal text, parent=normal text}
+\setbeamercolor{author}{use=normal text, parent=normal text, fg=wpigray}
+\setbeamercolor{institute}{use=normal text, parent=normal text, fg=wpigray}
+\setbeamercolor{date}{use=normal text, parent=normal text, fg=wpigray}
+
+%
+% Lists
+%
+% Color of itemize symbols
+\setbeamercolor{itemize item}{fg=wpired}
+\setbeamercolor{itemize subitem}{fg=wpired}
+\setbeamercolor{itemize subsubitem}{fg=wpired}
+% Color of enumerate numbers
+\setbeamercolor{enumerate item}{use=normal text, parent=normal text}
+\setbeamercolor{enumerate subitem}{use=normal text, parent=normal text}
+\setbeamercolor{enumerate subsubitem}{use=normal text, parent=normal text}
+% Color of description label
+\setbeamercolor{description item}{fg=wpired}
+
+%
+% Blocks
+%
+\setbeamercolor{block title}{fg=white, bg=wpired}
+\setbeamercolor{block body}{use=normal text, parent=normal text, bg=black!10}
