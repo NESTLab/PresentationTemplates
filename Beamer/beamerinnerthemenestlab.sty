@@ -1,5 +1,5 @@
 \usepackage{tikz}
-\usetikzlibrary{backgrounds,positioning}
+\usetikzlibrary{backgrounds,chains,positioning}
 
 %
 % Title page
@@ -7,12 +7,20 @@
 \setbeamertemplate{title page}{
   \begin{tikzpicture}[remember picture, overlay]
     \useasboundingbox[help lines] (current page.north west) grid (current page.south east);
-    \begin{scope}[every node/.style={anchor=west, text width=\textwidth, minimum height=1em}]
-      \node(title) at (0,1)                   {\usebeamertemplate*{title}};
-      \node(subtitle) [below=5mm of title]    {\usebeamertemplate*{subtitle}};
-      \node(author)   [below=5mm of subtitle] {\usebeamertemplate*{author}};
-      \node(institute)[below=2mm of author]   {\usebeamertemplate*{institute}};
-      \node(date)     [below=2mm of institute]{\usebeamertemplate*{date}};
+    \begin{scope}[
+      start chain=going below,
+      node distance=5mm,
+      every node/.style={
+        anchor=west,
+        text width=\textwidth,
+        minimum height=1em}]
+      \ifx\inserttitle       \@empty\else\node[on chain] at (0,1) {\usebeamertemplate*{title}};    \fi
+      \ifx\insertsubtitle    \@empty\else\node[on chain]          {\usebeamertemplate*{subtitle}}; \fi
+      \ifx\beamer@shortauthor\@empty\else\node[on chain]          {\usebeamertemplate*{author}};   \fi
+      \begin{scope}[node distance=2mm]
+        \ifx\insertinstitute   \@empty\else\node[on chain]          {\usebeamertemplate*{institute}};\fi
+        \ifx\insertdate        \@empty\else\node[on chain]          {\usebeamertemplate*{date}};     \fi
+      \end{scope}
     \end{scope}
     \begin{scope}[on background layer, remember picture, overlay]
       % Official WPI logo
@@ -85,7 +93,7 @@
     \end{scope}
     \begin{scope}[on background layer, remember picture, overlay]
       % Red banner
-      \fill[wpired] (current page.north west) rectangle +(\pagewidth, -1.5cm);
+      \fill[wpired] (current page.north west) rectangle +(\paperwidth, -1.5cm);
       % NESTLab logo
       \node[anchor=south west,xshift=8mm,yshift=2mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};
       % Background WPI logo
