@@ -31,7 +31,7 @@
 %
 \setbeamertemplate{frametitle}{
   \begin{tikzpicture}
-    \node(frametitle)[text width=\textwidth,minimum height=2em]{\insertframetitle};
+    \node(frametitle)[text width=\textwidth,minimum height=1em,inner xsep=0]{\insertframetitle};
     \draw[line width=2pt,wpired] (frametitle.south west) -- (frametitle.south east);
   \end{tikzpicture}
 }

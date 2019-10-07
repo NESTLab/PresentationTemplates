@@ -1,5 +1,5 @@
 \usepackage{tikz}
-\usetikzlibrary{backgrounds,chains,positioning}
+\usetikzlibrary{backgrounds,calc,chains,positioning}
 
 %
 % Title page
@@ -18,8 +18,8 @@
       \ifx\insertsubtitle    \@empty\else\node[on chain]          {\usebeamertemplate*{subtitle}}; \fi
       \ifx\beamer@shortauthor\@empty\else\node[on chain]          {\usebeamertemplate*{author}};   \fi
       \begin{scope}[node distance=2mm]
-        \ifx\insertinstitute   \@empty\else\node[on chain]          {\usebeamertemplate*{institute}};\fi
-        \ifx\insertdate        \@empty\else\node[on chain]          {\usebeamertemplate*{date}};     \fi
+        \ifx\insertinstitute   \@empty\else\node[on chain]        {\usebeamertemplate*{institute}};\fi
+        \ifx\insertdate        \@empty\else\node[on chain]        {\usebeamertemplate*{date}};     \fi
       \end{scope}
     \end{scope}
     \begin{scope}[on background layer, remember picture, overlay]
@@ -111,3 +111,19 @@
 % Itemize symbols
 %
 \setbeamertemplate{itemize items}[square]
+
+%
+% Frame with citation
+%
+\newenvironment{citeframe}[4]{
+  \begin{frame}
+    \begin{tikzpicture}[remember picture,overlay]
+      \node(citation)[yshift=2em,text width=\textwidth,text centered,minimum height=1em,inner xsep=0,font=\footnotesize]
+      at (current page.south) {
+        #1. \textbf{#2}. \textit{#3 #4}.
+      };
+      \draw[line width=1pt,wpired] (citation.north west) -- (citation.north east);
+    \end{tikzpicture}
+  }{
+    \end{frame}
+  }
