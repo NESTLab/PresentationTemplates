@@ -115,15 +115,12 @@
 %
 % Frame with citation
 %
-\newenvironment{citeframe}[4]{
-  \begin{frame}
-    \begin{tikzpicture}[remember picture,overlay]
-      \node(citation)[yshift=2em,text width=\textwidth,text centered,minimum height=1em,inner xsep=0,font=\footnotesize]
-      at (current page.south) {
-        #1. \textbf{#2}. \textit{#3 #4}.
-      };
-      \draw[line width=1pt,wpired] (citation.north west) -- (citation.north east);
-    \end{tikzpicture}
-  }{
-    \end{frame}
-  }
+\newcommand{\citepaper}[3]{
+  \begin{tikzpicture}[remember picture,overlay]
+    \node(citation)[above,text width=\textwidth,text centered,minimum height=1em,inner xsep=0,font=\footnotesize]
+    at (current page.south) {
+      #1. \textit{#2 #3}.
+    };
+    \draw[line width=1pt,wpired] (citation.north west) -- (citation.north east);
+  \end{tikzpicture}
+}
