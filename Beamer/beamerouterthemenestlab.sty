@@ -3,8 +3,8 @@
 %
 % Margins
 %
-\setbeamersize{text margin left=1cm}
-\setbeamersize{text margin right=1cm}
+\setbeamersize{text margin left=5mm}
+\setbeamersize{text margin right=5mm}
 \setbeamersize{sidebar width left=0cm}
 \setbeamersize{sidebar width right=0cm}
 \setbeamersize{mini frame size=0cm}
@@ -31,7 +31,7 @@
 %
 \setbeamertemplate{frametitle}{
   \begin{tikzpicture}
-    \node(frametitle)[text width=\textwidth,minimum height=1em,inner xsep=0]{\insertframetitle};
+    \node(frametitle)[text width=\textwidth,minimum height=2em,inner xsep=0]{\insertframetitle};
     \draw[line width=2pt,wpired] (frametitle.south west) -- (frametitle.south east);
   \end{tikzpicture}
 }
