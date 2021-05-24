@@ -124,10 +124,9 @@
     \draw[line width=2pt,wpired] (citation.north west) -- (citation.north east);
   \end{tikzpicture}
 }
-\newenvironment{citeframe}[4]{%
+\newenvironment{citeframe}[3]{%
   \begin{frame}%
-    \frametitle{#1}%
-    \citepaper{#2}{#3}{#4}%
+    \citepaper{#1}{#2}{#3}%
   }{%
   \end{frame}%
 }
