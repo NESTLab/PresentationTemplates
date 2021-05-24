@@ -1,4 +1,5 @@
 \usepackage{tikz}
+\usetikzlibrary{backgrounds,calc,chains,positioning}
 
 %
 % Margins
@@ -19,19 +20,28 @@
 % Show page number
 %
 \setbeamertemplate{footline}{
-  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
-    \usebeamerfont{page number in head/foot}%
-    \hfill%
-    \insertframenumber
-  \end{beamercolorbox}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \pgfdeclarelayer{foreground}
+    \pgfsetlayers{main,foreground}
+    \begin{pgfonlayer}{foreground}
+      \node[left,shift={(-5mm,5mm)},inner sep=0mm,fill=white] at (current page.south east) {
+        \usebeamerfont{page number in head/foot}%
+        \insertframenumber
+    };
+    \end{pgfonlayer}
+  \end{tikzpicture}
 }
 
 %
 % Frame title
 %
 \setbeamertemplate{frametitle}{
-  \begin{tikzpicture}
-    \node(frametitle)[text width=\textwidth,minimum height=2em,inner xsep=0]{\insertframetitle};
-    \draw[line width=2pt,wpired] (frametitle.south west) -- (frametitle.south east);
+  \begin{tikzpicture}[remember picture, overlay]
+    \pgfdeclarelayer{foreground}
+    \pgfsetlayers{main,foreground}
+    \begin{pgfonlayer}{foreground}
+      \node(frametitle)[below,text width=\textwidth,text height=1.2em,text depth=0.5em,inner sep=0] at (current page.north) {\insertframetitle};
+      \draw[line width=2pt,wpired] (frametitle.south west) -- (frametitle.south east);
+    \end{pgfonlayer}
   \end{tikzpicture}
 }
