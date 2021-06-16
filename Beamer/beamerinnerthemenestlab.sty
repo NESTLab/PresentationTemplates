@@ -17,10 +17,10 @@
       \ifx\inserttitle       \@empty\else\node[on chain] at (0,1) {\usebeamertemplate*{title}};    \fi
       \ifx\insertsubtitle    \@empty\else\node[on chain]          {\usebeamertemplate*{subtitle}}; \fi
       \ifx\beamer@shortauthor\@empty\else\node[on chain]          {\usebeamertemplate*{author}};   \fi
-      \begin{scope}[node distance=2mm]
-        \ifx\insertinstitute   \@empty\else\node[on chain]        {\usebeamertemplate*{institute}};\fi
-        \ifx\insertdate        \@empty\else\node[on chain]        {\usebeamertemplate*{date}};     \fi
-      \end{scope}
+      % \begin{scope}[node distance=5mm]
+      \ifx\insertinstitute   \@empty\else\node[on chain]          {\usebeamertemplate*{institute}};\fi
+      \ifx\insertdate        \@empty\else\node[on chain]          {\usebeamertemplate*{date}};     \fi
+      % \end{scope}
     \end{scope}
     \begin{scope}[on background layer, remember picture, overlay]
       % Official WPI logo
