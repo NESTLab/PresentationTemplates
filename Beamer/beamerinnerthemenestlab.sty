@@ -108,14 +108,34 @@
 }
 
 %
+% Section page
+%
+\setbeamertemplate{subsection page}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \useasboundingbox[help lines] (current page.north west) grid (current page.south east);
+    \begin{scope}[every node/.style={anchor=west, text width=\textwidth, minimum height=1em}]
+      \node at (0,-1) {\usebeamertemplate*{section title}\\[1em] \usebeamertemplate*{subsection title}};
+    \end{scope}
+    \begin{scope}[on background layer, remember picture, overlay]
+      % Red banner
+      \fill[wpired] (current page.north west) rectangle +(\paperwidth, -1.5cm);
+      % NESTLab logo
+      \node[anchor=south west,inner sep=0,xshift=5mm,yshift=5mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};
+      % Background WPI logo
+      \node[xshift=1.5mm,yshift=-1.5mm,anchor=south east] at (current page.south east) {\includegraphics[scale=2]{wpi_background}};
+    \end{scope}
+  \end{tikzpicture}
+}
+
+% Section title
+\setbeamertemplate{subsection title}{
+  \insertsubsection
+}
+
+%
 % Itemize symbols
 %
 \setbeamertemplate{itemize items}[square]
-
-%
-% Rounded blocks
-%
-\setbeamertemplate{blocks}[rounded]
 
 %
 % Frame with citation
