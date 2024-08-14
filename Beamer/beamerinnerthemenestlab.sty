@@ -1,6 +1,11 @@
 \usepackage{tikz}
 \usetikzlibrary{backgrounds,calc,chains,positioning}
 
+\newbool{beamer@nestlab@nonest}
+
+\DeclareOptionBeamer{nonest}{\booltrue{beamer@nestlab@nonest}}
+\ProcessOptionsBeamer
+
 %
 % Title page
 %
@@ -26,7 +31,7 @@
       % Official WPI logo
       \node[anchor=north west,xshift=5mm,yshift=-5mm] at (current page.north west) {\includegraphics[height=1.5cm]{wpi_logo}};
       % NESTLab logo
-      \node[anchor=south west,inner sep=0,xshift=5mm,yshift=5mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};
+      \ifbool{beamer@nestlab@nonest}{}{\node[anchor=south west,inner sep=0,xshift=5mm,yshift=5mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};}
       % Background WPI logo
       \node[xshift=1.5mm,yshift=-1.5mm,anchor=south east] at (current page.south east) {\includegraphics[scale=2]{wpi_background}};
     \end{scope}
@@ -95,7 +100,7 @@
       % Red banner
       \fill[wpired] (current page.north west) rectangle +(\paperwidth, -1.5cm);
       % NESTLab logo
-      \node[anchor=south west,inner sep=0,xshift=5mm,yshift=5mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};
+      \ifbool{beamer@nestlab@nonest}{}{\node[anchor=south west,inner sep=0,xshift=5mm,yshift=5mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};}
       % Background WPI logo
       \node[xshift=1.5mm,yshift=-1.5mm,anchor=south east] at (current page.south east) {\includegraphics[scale=2]{wpi_background}};
     \end{scope}
@@ -120,7 +125,7 @@
       % Red banner
       \fill[wpired] (current page.north west) rectangle +(\paperwidth, -1.5cm);
       % NESTLab logo
-      \node[anchor=south west,inner sep=0,xshift=5mm,yshift=5mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};
+      \ifbool{beamer@nestlab@nonest}{}{\node[anchor=south west,inner sep=0,xshift=5mm,yshift=5mm] at (current page.south west) {\includegraphics[width=5cm]{nest_logo}};}
       % Background WPI logo
       \node[xshift=1.5mm,yshift=-1.5mm,anchor=south east] at (current page.south east) {\includegraphics[scale=2]{wpi_background}};
     \end{scope}
